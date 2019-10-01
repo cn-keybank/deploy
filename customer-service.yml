@@ -55,7 +55,7 @@ metadata:
   namespace: REPLACE_NAMESPACE
 spec:
   ports:
-  - port: 8080
+  - port: 9002
     protocol: TCP
     targetPort: 8080
   selector:
