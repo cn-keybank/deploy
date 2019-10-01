@@ -61,5 +61,6 @@ spec:
   selector:
     run: order
   type: LoadBalancer
+  loadBalancerIP: 10.254.36.51
 status:
   loadBalancer: {}
