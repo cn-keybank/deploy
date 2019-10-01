@@ -61,5 +61,6 @@ spec:
   selector:
     run: customer
   type: LoadBalancer
+  loadBalancerIP: 10.254.36.51
 status:
   loadBalancer: {}
