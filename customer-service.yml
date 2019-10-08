@@ -17,7 +17,9 @@ spec:
       creationTimestamp: null
       labels:
         run: customer
-    spec:
+    spec:      
+      imagePullSecrets:
+      - name: private-registry-creds
       containers:
       - image: REPLACE-IMAGE-NAME
         name: customer
