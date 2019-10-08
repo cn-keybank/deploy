@@ -18,8 +18,6 @@ spec:
       labels:
         run: catalog
     spec:
-      imagePullSecrets:
-      - name: private-registry-creds
       containers:
       - image: REPLACE-IMAGE-NAME
         name: catalog
