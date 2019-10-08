@@ -18,8 +18,6 @@ spec:
       labels:
         run: front-end
     spec:
-      imagePullSecrets:
-      - name: private-registry-creds
       containers:
       - image: REPLACE-IMAGE-NAME
         name: front-end
