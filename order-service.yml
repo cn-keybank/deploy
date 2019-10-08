@@ -58,6 +58,7 @@ spec:
   - port: 9004
     protocol: TCP
     targetPort: 8080
+    name: grp4
   selector:
     run: order
   type: LoadBalancer
