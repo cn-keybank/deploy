@@ -58,6 +58,7 @@ spec:
   - port: 9003
     protocol: TCP
     targetPort: 8080
+    name: grp1
   selector:
     run: catalog
   type: LoadBalancer
