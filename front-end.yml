@@ -55,16 +55,19 @@ metadata:
   labels:
     run: frontend-external
   name: frontend-external
-  namespace: REPLACE_NAMESPACE
+  namespace: REPLACE_NAMESPACE 
 spec:
+  ports:
+  - port: 9001
+    protocol: TCP
+    targetPort: 80
+    name: grpc
+  selector:
+    run: front-end
   type: LoadBalancer
   loadBalancerIP: 10.254.36.51
-  selector:
-    app: front-end
-  ports:
-  - name: http
-    port: 9001
-    targetPort: 80
+status:
+  loadBalancer: {}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
