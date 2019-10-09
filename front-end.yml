@@ -44,9 +44,27 @@ spec:
   selector:
     run: front-end
   type: ClusterIP
-#   loadBalancerIP: 10.254.36.51
+  # loadBalancerIP: 10.254.36.51
 # status:
 #   loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: frontend-external
+  name: frontend-external
+  namespace: REPLACE_NAMESPACE
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.254.36.51
+  selector:
+    app: front-end
+  ports:
+  - name: http
+    port: 9001
+    targetPort: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
