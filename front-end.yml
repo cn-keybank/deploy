@@ -42,7 +42,7 @@ spec:
   - port: 9001
     protocol: TCP
     targetPort: 80
-    name: grp3
+    name: grpc
   selector:
     run: front-end
   type: LoadBalancer
