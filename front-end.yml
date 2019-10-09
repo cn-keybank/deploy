@@ -60,7 +60,8 @@ spec:
   hosts:
   - "*"
   gateways:
-  - istio-ingress
+  - istio-ingress.gke-system.svc.cluster.local
+  - mesh
   http:
   - route:
     - destination:
@@ -78,7 +79,7 @@ metadata:
   namespace: REPLACE_NAMESPACE
 spec:
   hosts:
-  - "front-end.default.svc.cluster.local"
+  - "front-end.staging.svc.cluster.local"
   http:
   - route:
     - destination:
