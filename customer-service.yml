@@ -42,9 +42,7 @@ spec:
               name: mongodb
               key: database-password
 status: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -61,7 +59,7 @@ spec:
     name: grpc
   selector:
     run: customer
-  type: LoadBalancer
-  loadBalancerIP: 10.254.36.51
-status:
-  loadBalancer: {}
+  type: ClusterIP
+#   loadBalancerIP: 10.254.36.51
+# status:
+#   loadBalancer: {}

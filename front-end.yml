@@ -26,26 +26,62 @@ spec:
         resources: {}
         imagePullPolicy: Always
 status: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    run: front-end
-  name: front-end
+    run: frontend
+  name: frontend
   namespace: REPLACE_NAMESPACE
 spec:
   ports:
-  - port: 9001
+  - port: 80
     protocol: TCP
     targetPort: 80
     name: grpc
   selector:
-    run: front-end
-  type: LoadBalancer
-  loadBalancerIP: 10.254.36.51
-status:
-  loadBalancer: {}
+    run: frontend
+  type: ClusterIP
+#   loadBalancerIP: 10.254.36.51
+# status:
+#   loadBalancer: {}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  creationTimestamp: null
+  labels:
+    run: frontend-ingress
+  name: frontend-ingress
+  namespace: REPLACE_NAMESPACE
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingress
+  http:
+  - route:
+    - destination:
+        host: frontend
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  creationTimestamp: null
+  labels:
+    run: frontend
+  name: frontend
+  namespace: REPLACE_NAMESPACE
+spec:
+  hosts:
+  - "frontend.default.svc.cluster.local"
+  http:
+  - route:
+    - destination:
+        host: frontend
+        port:
+          number: 80

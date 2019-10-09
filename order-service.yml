@@ -61,7 +61,7 @@ spec:
     name: grpc
   selector:
     run: order
-  type: LoadBalancer
-  loadBalancerIP: 10.254.36.51
-status:
-  loadBalancer: {}
+  type: ClusterIP
+#   loadBalancerIP: 10.254.36.51
+# status:
+#   loadBalancer: {}
