@@ -32,8 +32,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    run: frontend
-  name: frontend
+    run: front-end
+  name: front-end
   namespace: REPLACE_NAMESPACE
 spec:
   ports:
@@ -42,7 +42,7 @@ spec:
     targetPort: 80
     name: grpc
   selector:
-    run: frontend
+    run: front-end
   type: ClusterIP
 #   loadBalancerIP: 10.254.36.51
 # status:
@@ -64,7 +64,7 @@ spec:
   http:
   - route:
     - destination:
-        host: frontend
+        host: front-end
         port:
           number: 80
 ---
@@ -73,15 +73,15 @@ kind: VirtualService
 metadata:
   creationTimestamp: null
   labels:
-    run: frontend
-  name: frontend
+    run: front-end
+  name: front-end
   namespace: REPLACE_NAMESPACE
 spec:
   hosts:
-  - "frontend.default.svc.cluster.local"
+  - "front-end.default.svc.cluster.local"
   http:
   - route:
     - destination:
-        host: frontend
+        host: front-end
         port:
           number: 80
