@@ -58,7 +58,7 @@ spec:
   - port: 9002
     protocol: TCP
     targetPort: 8080
-    name: grp2
+    name: grpc
   selector:
     run: customer
   type: LoadBalancer
